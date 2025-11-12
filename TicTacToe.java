@@ -1,3 +1,5 @@
+package TicTacToe;
+
 import java.util.Scanner;
 
 class TicTacToe {
@@ -13,21 +15,6 @@ class TicTacToe {
     public static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] params) {
-        // System.out.println("hello world");
-
-        // System.out.println("Quel est votre âge ?");
-        // while (true) {
-        // try {
-        // int age = scan.nextInt();
-        // System.out.println("Votre âge est : " + age);
-        // break;
-
-        // } catch (Exception e) {
-        // System.out.println("Un nombre");
-        // scan.nextLine();
-        // }
-        // }
-
         display();
 
         chooseCase();
@@ -88,7 +75,7 @@ class TicTacToe {
                                 System.exit(0);
                             }
                             ;
-                            hasWon();
+                            hasWon(idPlayer);
                             isFound = true;
                             idPlayer = idPlayer == 1 ? 2 : 1;
                         } else {
@@ -109,34 +96,34 @@ class TicTacToe {
         }
     }
 
-    public static void hasWon() {
+    public static void hasWon(int idPlayer) {
 
         for (int i = 0; i < 3; i++) {
             if (board[i][0] != '.' &&
                     board[i][0] == board[i][1] &&
                     board[i][1] == board[i][2]) {
-                System.out.println("Le joueur avec les " + board[i][0] + " a gagné !");
+                System.out.println("Le joueur " + idPlayer + " a gagné !");
                 System.exit(0);
             }
 
             else if (board[0][i] != '.' &&
                     board[0][i] == board[1][i] &&
                     board[1][i] == board[2][i]) {
-                System.out.println("Le joueur avec les " + board[0][i] + " a gagné !");
+                System.out.println("Le joueur " + idPlayer + " a gagné !");
                 System.exit(0);
             }
 
             if (board[0][0] != '.' &&
                     board[1][1] == board[0][0] &&
                     board[2][2] == board[1][1]) {
-                System.out.println("Le joueur avec les " + board[0][0] + " a gagné !");
+                System.out.println("Le joueur " + idPlayer + " a gagné !");
                 System.exit(0);
 
             }
             if (board[0][2] != '.' &&
                     board[1][1] == board[0][2] &&
                     board[2][0] == board[1][1]) {
-                System.out.println("Le joueur avec les " + board[0][2] + " a gagné !");
+                System.out.println("Le joueur " + idPlayer + " a gagné !");
                 System.exit(0);
             }
         }
@@ -157,6 +144,7 @@ class TicTacToe {
                 }
             }
         }
+
         return true;
     }
 }
